@@ -1,0 +1,24 @@
+{
+  "name": "asteroids",
+  "version": "1.0.0",
+  "description": "A clone of the classic Asteroids game.",
+  "main": "index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tatchison/Asteroids.git"
+  },
+  "author": "Travis Atchison",
+  "license": "THE UNLICENSE",
+  "bugs": {
+    "url": "https://github.com/tatchison/Asteroids/issues"
+  },
+  "homepage": "https://github.com/tatchison/Asteroids#readme",
+  "devDependencies": {
+    "react-scripts": "^1.0.14"
+  }
+}
