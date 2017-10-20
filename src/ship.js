@@ -22,6 +22,8 @@ export default class Ship{
 		else if(right){
 			//rotate clockwise
 		}
+		//need to treat forward movement like laser object
+		//will do that once direction is figured out
 		if(up){
 			this.x = this.x + this.vector.x;
 			this.y = this.y + this.vector.y;

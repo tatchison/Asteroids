@@ -2,19 +2,24 @@
 
 import Ship from './ship';
 import Laser from './laser';
+import Asteroid from './asteroid';
 import * as Vector from './vector';
 
 export default class Game{
 	constructor(){
-		this.ship = new Ship(150, 75);
-		this.lasers = [];
-		//create the initial asteroids
-		this.points = 0;
-		this.stock = 3;
 		this.width = 300;
 		this.height = 150;
 		this.gwidth = 15;
 		this.gheight = 15;
+		this.ship = new Ship(150, 75);
+		this.lasers = [];
+		//create the initial asteroids
+		this.asteroids = [];
+		for(var i = 0; i < 10; i++){
+			this.asteroids.push(new Asteroid(this.width, this.height));
+		}
+		this.points = 0;
+		this.stock = 3;
 		//reset to default false when finisehd tinkering with ship
 		this.over = false;
 		this.left = false;
@@ -118,6 +123,9 @@ export default class Game{
 		this.ship.render(this.backCtx);
 		this.lasers.forEach((laser) => {
 			laser.render(this.backCtx);
+		})
+		this.asteroids.forEach((asteroid) => {
+			asteroid.render(this.backCtx);
 		})
 		this.screenCtx.clearRect(0, 0, this.width, this.height);
 		this.screenCtx.drawImage(this.backBufferCanvas, 0, 0);
