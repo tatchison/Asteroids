@@ -18,7 +18,7 @@ canvas{
 	position: absolute;
 	top: 30px;
 	bottom: 30px;
-	width: 110px;
+	width: 130px;
 	height: 10px;
 	display: flex;
 	color: white;
@@ -33,6 +33,32 @@ canvas{
 	bottom: 30px;
 	width: 2350px;
 	height: 10px;
+	display: flex;
+	color: white;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#message{
+	position: absolute;
+	top: 300px;
+	bottom: 75px;
+	width: 1200px;
+	height: 10px;
+	display: flex;
+	color: white;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#instructions{
+	position: absolute;
+	top: 600px;
+	bottom: 75px;
+	width: 700px;
+	height: 20px;
 	display: flex;
 	color: white;
 	flex-direction: column;

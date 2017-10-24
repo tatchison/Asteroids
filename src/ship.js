@@ -1,13 +1,13 @@
 // ship.js
 
+import * as Vector from './vector';
+
 export default class Ship{
 	constructor(x, y){
-		this.x = x;
-		this.y = y;
-		this.vector = {
-			x: 5,
-			y: 5
-		}
+		this.position = {
+			x: x,
+			y: y
+		};
 		this.angle = 20;
 		this.speed = 5;
 	}
@@ -17,21 +17,24 @@ export default class Ship{
 	*/
 	update(left, right, up){
 		if(left){
-			//rotate counterclockwise
+			this.angle += 0.1;
 		}
 		else if(right){
-			//rotate clockwise
+			this.angle -= 0.1;
 		}
 		//need to treat forward movement like laser object
 		//will do that once direction is figured out
 		if(up){
-			this.x = this.x + this.vector.x;
-			this.y = this.y + this.vector.y;
+			var move = {x: 0, y: 1};
+			var rot = Vector.rotate(move, this.angle);
+			var scale = Vector.scalarmult(rot, this.speed);
+			this.position = Vector.add(this.position, scale);
+			
 		}
-		if(this.x >= 300)this.x = 0;
-		else if(this.x <= 0)this.x = 300;
-		if(this.y >= 150)this.y = 0;
-		else if(this.y <= 0)this.y = 150;
+		if(this.position.x > 300)this.position.x = 0;
+		else if(this.position.x < 0)this.position.x = 300;
+		if(this.position.y > 150)this.position.y = 0;
+		else if(this.position.y < 0)this.position.y = 150;
 	}
 	
 	/** @method render
@@ -40,15 +43,11 @@ export default class Ship{
 	render(ctx){
 		ctx.save();
 		ctx.beginPath();
-		/*ctx.translate(0,0);
-		ctx.rotate(this.angle);
-		ctx.translate(this.x, this.y)
-		ctx.moveTo(0, -5);
+		ctx.translate(this.position.x, this.position.y);
+		ctx.rotate(-this.angle);
+		ctx.moveTo(0,-5);
 		ctx.lineTo(2, 5);
-		ctx.lineTo(-2, 5);*/
-		ctx.moveTo(this.x, this.y - 5);
-		ctx.lineTo(this.x + 2, this.y + 5);
-		ctx.lineTo(this.x - 2, this.y + 5);
+		ctx.lineTo(-2, 5);
 		ctx.strokeStyle = 'white';
 		ctx.closePath();
 		ctx.stroke();
